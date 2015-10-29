@@ -1,33 +1,3 @@
-# go-slog
-
-Package slog is a fork of the standard go log and syslog packages. It is a
-drop in replacement for the default log package and consolidates logging to
-stdout/syslog/file with log levels. However, it does not instantiate a
-standard logger. File logger supports log file rotation on SIGHUP.
-
-Work in progress...
-
-## Usage
-
-```go
-import slog "github.com/bartke/go-slog"
-```
-
-Setup and use a standard logger by defining a global:
-
-```go
-var log = logger.New(os.Stderr, "", LstdFlags, LOG_INFO)
-
-// and use it as usual
-log.Error("something went wrong")
-```
-
-### Example
-
-Simple example that shows how to enable syslog/logfile and setting the log
-level with flags.
-
-```go
 package main
 
 import (
@@ -38,7 +8,6 @@ import (
 	slog "github.com/bartke/go-slog"
 )
 
-// setup our new standard logger
 var log *slog.Logger
 
 func main() {
@@ -86,5 +55,3 @@ func main() {
 
 	log.Fatal("fatal at fatal log-level")
 }
-```
-
